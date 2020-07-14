@@ -1,0 +1,9 @@
+<h2 matDialogTitle> {{ data.titulo}}</h2>
+<mat-dialog-content>
+  <p>{{ data.descripcion}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-raised-button matDialogClose="cancel" color="warn" *ngIf="data.cancelarBtn">Cancelar</button>
+  <button mat-button mat-raised-button matDialogClose="confirm" color="primary"
+    matTooltip="Aceptar y cerrar el mensaje" *ngIf="data.aceptarBtn"><mat-icon color="primary">done</mat-icon> Aceptar</button>
+</mat-dialog-actions>

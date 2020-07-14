@@ -1,0 +1,89 @@
+<div fxLayout="row wrap">
+	<div fxFlex="100%" >
+        <span *ngIf="allowedFiles.length > 0" class="span-label">Archivos que se pueden seleccionar</span>
+    </div>
+</div>
+<div fxLayout="row wrap">
+	<div fxFlex.gt-sm="100%">
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="left" >
+            <div fxFlex="50%" fxFlex.gt-sm="100%">
+                <mat-list *ngIf="allowedFiles.length > 0" class="dont-break-out" >
+                    <div fxLayout="row" class="row-height-25">
+                        <div fxFlex="5%" fxFlex.md="20%"><b><mat-icon matTooltip="Indica si el archivo ya ha sido seleccionado" class="done">done</mat-icon></b></div>
+                        <div fxFlex="50%" fxFlex.md="80%"><b>Nombre correcto</b></div>
+                        <div fxFlex="45%" fxHide.md fxHide.xs><b>Tipo de archivo</b></div>
+                    </div>
+                    <mat-list-item *ngFor="let na of allowedFiles;let j=index" >
+                        <div fxLayout="row" class="row-height-25">
+                            <div fxFlex="5%" fxFlex.md="20%"><mat-icon class="done" *ngIf="na['seleccionado']==='SI'">done</mat-icon></div>
+                            <div fxFlex="50%" fxFlex.md="80%">{{na['NombreArchivo']}}</div>
+                            <div fxFlex="45%" fxHide.md fxHide.xs>{{na['nombre']}}</div>
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <div fxFlex="50%" fxFlex.gt-sm="100%" >
+                <div id="dragNDrop" [ngClass]="(hideSelectBtn && hideResetBtn) ? null : 'dragNDropBtmPad'" class="dragNDrop"> <!-- matTooltip="Seleccionar los archivos"  -->
+                    <div style="position:relative;">
+                        <div id="div1" class="afu-dragndrop-box" (drop)="drop($event)" (dragover)="allowDrop($event)">
+                            <p class="afu-dragndrop-text">Arrastrar archivos aquí</p>
+                            <mat-list *ngIf="selectedFilesLabels.length > 0" class="dont-break-out">
+                                <span class="span-label">Archivos seleccionados</span>
+                                <div fxLayout="row" class="row-height-25">
+                                    <div fxFlex="5%"><b>N°</b></div>
+                                    <div fxFlex="35%"><b>Nombre</b></div>
+                                    <div fxFlex="10%"><b>Tam<span fxHide.xs fxHide.md fxHide.lg>año</span><span fxHide.sm fxShow.md>.</span></b></div>
+                                    <div fxFlex="45%"><b>Mensaje de error</b></div>
+                                    <div fxFlex="5%"></div>
+                                </div>
+                                <mat-list-item *ngFor="let na of selectedFilesLabels;let j=index" class="div-row">
+                                    <div fxLayout="row" class="row-height-25" [ngClass]="[na['errorMsg'] !== ''? 'div-row-warning' : '']">
+                                        <div fxFlex="5%">{{j + 1}}</div>
+                                        <div fxFlex="35%">{{na['fileName']}}</div>
+                                        <div fxFlex="10%" style="font-size: 12px;">{{na['fileSize']}}</div>
+                                        <div fxFlex="45%">{{na['errorMsg']}}</div>
+                                        <div fxFlex="5%">
+                                            <mat-icon matTooltip="Quitar el archivo" color="warn" (click)="removeFile(j,'na')" class="btn-icon" *ngIf="uploadClick">delete_sweep</mat-icon>
+                                        </div>
+                                    </div>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div fxLayout="row wrap">
+	<div fxFlex.gt-sm="100%">
+    <!--ORIGINAL <label for="sel{{id}}" class="btn btn-primary btn-sm afu-select-btn" *ngIf="!hideSelectBtn">Select File<span *ngIf="multiple">s</span></label>-->
+    <div style="clear: both; height: 10px;"></div>
+    <div fxFlex>
+        <div fxFlexFill fxFlex fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="left">
+            <div fxLayoutAlign="left" fxFlex="50%" fxLayout.lt-sm="column" >
+                <button mat-raised-button color="warn" class="resetBtn afu-btn afu-reset-btn" (click)="resetFileUpload()" *ngIf="!hideResetBtn" [disabled]="!(selectedFiles.length > 0 || allowedFiles.length > 0)"><mat-icon>replay</mat-icon> Limpiar</button>
+            </div>
+            <div fxLayoutAlign="left" fxFlex="50%" fxFlex.lt-sm="100%">
+                <label for="sel{{id}}" class="mat-raised-button afu-btn" matTooltip="Seleccionar archivos" color="primary" *ngIf="!hideSelectBtn"><mat-icon>attach_file</mat-icon> Seleccionar 
+                    <span fxHide.xs fxHide.sm>archivo<span *ngIf="multiple">s</span>
+                    </span>
+                </label>
+                <input type="file" id="sel{{id}}" style="display: none" *ngIf="!hideSelectBtn" (change)="onChange($event)" title="Select file" name="files[]" [accept]=formatsAllowed [attr.multiple]="multiple ? '' : null" />
+                <button mat-raised-button matTooltip="Enviar los archivos" color="primary" class="afu-upload-bt afu-btn" type="button" (click)="uploadFiles()" [disabled]="!uploadBtn"><mat-icon>send</mat-icon> {{uploadBtnText}}</button>
+            </div>
+        </div>
+    </div>
+
+    <p *ngIf="uploadMsg" class="{{uploadMsgClass}} + afu-upload-status">{{uploadMsgText}}<p>
+
+    <div *ngIf="progressBarShow && !hideProgressBar">
+        <span>{{percentComplete}}%</span>
+        <mat-progress-bar
+            class="example-margin"
+            [value]="percentComplete">
+        </mat-progress-bar>
+    </div>
+</div>
+</div>

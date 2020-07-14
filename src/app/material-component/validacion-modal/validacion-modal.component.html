@@ -1,0 +1,49 @@
+<div>
+<h3 md-dialog-subtitle>Validar Recepcion Nro: {{archivoEnviado.id}} ({{archivoEnviado.periodo}})</h3>
+<mat-dialog-content>
+  <strong>Usuario: </strong>{{archivoEnviado.usuarioEnvio}} 
+  <br/>
+  <strong>Fecha de envío: </strong>{{archivoEnviado.fechaHoraEnvio| date: 'dd/MM/yyyy hh:mm:ss'}}
+        
+  <mat-grid-list cols="12" rowHeight="70px" gutterSize = "5px">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      {{RegistroValorCuota.idRecepcion}}
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      {{RegistroValorCuota.idEntidad}}
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      {{RegistroValorCuota.periodo}}
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+       {{RegistroValorCuota.valorCuota}}
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+      {{RegistroValorCuota.valorFci}}
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+      {{RegistroValorCuota.rentabilidadDiaria}}
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        {{RegistroValorCuota.rentabilidadMensual}}
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <button mat-raised-button matTooltip="Volver a la lista" color="accent" (click)="validar()" class="btn-close">
+            validar <mat-icon>done</mat-icon>
+        </button>
+          </mat-grid-tile>
+  </mat-grid-list> 
+ 
+
+</mat-dialog-content>
+    <mat-dialog-actions>
+        <div fxLayout="row" fxFlexFill fxFlex="100%" fxLayoutAlign="right">
+            <div fxLayout="row" fxLayoutAlign="right" class="div-close">
+                <button mat-raised-button matTooltip="Volver a la lista" color="primary" (click)="close()" class="btn-close">
+                Atras <mat-icon>exit_to_app</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</div>
+

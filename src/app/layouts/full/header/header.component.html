@@ -1,0 +1,27 @@
+        
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+    <button mat-icon-button 
+        matTooltip="Manual de usuario">
+        <mat-icon>book</mat-icon>
+    </button>
+
+    <button mat-icon-button
+        matTooltip="Ayuda">
+        <mat-icon>help</mat-icon>
+    </button>
+
+    
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5"> <img src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button>
+<mat-menu #profile="matMenu" class="mymegamenu">
+    <button mat-menu-item>
+        <mat-icon>settings</mat-icon> Configuraciones </button>
+    <button mat-menu-item>
+        <mat-icon>account_box</mat-icon> Perfil </button>
+    <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon> Otra opción </button>
+    <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon> Salir </button>
+</mat-menu>
+

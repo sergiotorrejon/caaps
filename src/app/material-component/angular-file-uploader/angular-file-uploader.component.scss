@@ -1,0 +1,65 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+mat-icon.btn-icon { cursor: pointer; }
+.afu-dragndrop-box{border: 2px dashed #5c5b5b;}
+.constraints-info{ font-size: 10px; font-style: italic;}
+.afu-dragndrop-text{ text-align: center; height: 80px;}
+.row-height-25{height:auto;width:100%;}
+.afu-upload-bt{margin-left:auto;}
+.afu-btn{width: 250px;}
+@media (max-width: 576px) {
+    .afu-btn{/*min-width: 200px; max-width: 250px;*/width: 100%;}
+}
+
+.title-warning{width:100%; text-align: center; font-weight: bold; color: #ff3300;}
+.div-file-row{/*background-color: #eff5fa; /*color: #ff3300;*/ font-size: 14px !important; border-top: rgba(0,0,0,.42) solid thin;}
+.div-file-row .mat-list-item-content{padding: 0px!important;} 
+.done{color: #359b35; font-weight: bold;}
+
+.div-row{background-color: #ffffff; /*color: #ff3300;*/ font-size: 14px !important;  border-top: rgba(0,0,0,.42) solid thin; height: auto!important;}
+.div-row-warning{color:#fc4e4e; font-size: 14px !important;}
+
+.mat-list-item-content{padding: 0px 0px!important;}
+
+/*.title-ok{width:100%; text-align: center; font-weight: bold;}*/
+/*.div-ok{min-height:60px;}*/
+.span-label{color: rgba(0,0,0,.54); font-size: 11px;}
+
+.my-custom-cell {
+    text-align: left !important;
+    padding: 0.75em !important;
+    font-size: 10px !important;
+}
+
+.dont-break-out {
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-list .mat-list-item, .mat-list .mat-list-option, .mat-nav-list .mat-list-item, .mat-nav-list .mat-list-option, .mat-selection-list .mat-list-item, .mat-selection-list .mat-list-option {
+    display: block;
+    height: 28px;
+}
